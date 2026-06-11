@@ -1,20 +1,26 @@
 import { createBrowserRouter } from "react-router-dom";
 
+import MainLayout from "../layouts/MainLayout";
 import HomePage from "../pages/Homepage";
-import ProductPage from "../pages/ProductsPage";
+import ProductsPage from "../pages/ProductsPage";
 import NotFoundPage from "../pages/NotFoundPage";
 
 export const router = createBrowserRouter([
   {
-    path: "/",
-    element: <HomePage />
-  },
-  {
-    path: "/products",
-    element: <ProductPage />
+    element: <MainLayout />,
+    children: [
+      {
+        path: "/",
+        element: <HomePage />,
+      },
+      {
+        path: "/products",
+        element: <ProductsPage />,
+      },
+    ],
   },
   {
     path: "*",
-    element: <NotFoundPage />
-  }
+    element: <NotFoundPage />,
+  },
 ]);
